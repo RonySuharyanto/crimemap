@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:crimemap/shared/sizeconfig.dart';
@@ -5,6 +6,7 @@ import 'package:crimemap/shared/theme.dart';
 import 'package:crimemap/widgets/text_input.dart';
 import 'package:dropdownfield/dropdownfield.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:image_picker/image_picker.dart';
 
@@ -20,11 +22,18 @@ class FormLaporanPage extends StatefulWidget {
 class _FormLaporanPageState extends State<FormLaporanPage> {
   @override
   Widget build(BuildContext context) {
+    Completer<GoogleMapController> _controller = Completer();
     TextEditingController nomertelponController = TextEditingController();
     TextEditingController alamatController = TextEditingController();
     TextEditingController keteranganController = TextEditingController();
     File _image;
     final picker = ImagePicker();
+
+    final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(-6.130754, 106.856512),
+    zoom: 11,
+  );
+
 
     Future getImage() async {
       final pickedFile = await picker.getImage(source: ImageSource.camera);
@@ -127,6 +136,20 @@ class _FormLaporanPageState extends State<FormLaporanPage> {
                     ],
                   ),
                 ],
+              ),
+              SizedBox(height: 20),
+              //map
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 200,
+                child: GoogleMap(
+                  zoomGesturesEnabled: true,
+        mapType: MapType.normal,
+        initialCameraPosition: _kGooglePlex,
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+      ),
               ),
               SizedBox(height: 50),
               //button

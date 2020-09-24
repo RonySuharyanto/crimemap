@@ -1,8 +1,11 @@
+import 'package:crimemap/bloc/auth_bloc/auth_bloc.dart';
+import 'package:crimemap/screens/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfileList extends StatelessWidget {
-  final IconData icon1, icon2, icon3, icon4, icon5;
-  final String text1, text2, text3, text4, text5;
+  final IconData icon1, icon2, icon3, icon4, icon5, icon6;
+  final String text1, text2, text3, text4, text5, text6;
 
   ProfileList({
     this.icon1,
@@ -10,11 +13,13 @@ class ProfileList extends StatelessWidget {
     this.icon3,
     this.icon4,
     this.icon5,
+    this.icon6,
     this.text1,
     this.text2,
     this.text3,
     this.text4,
     this.text5,
+    this.text6,
   });
 
   @override
@@ -156,6 +161,40 @@ class ProfileList extends StatelessWidget {
                 SizedBox(width: 20.0),
                 Text(
                   text5,
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          //logout
+          InkWell(
+            onTap: () {
+              //
+              context.bloc<AuthBloc>().add(AuthEventLoggedOut());
+              //
+             Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => LoginPage()));
+              print('logout');
+            },
+            child: Row(
+              children: [
+                Container(
+                  width: 50.0,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.blue,
+                  ),
+                  child: Icon(
+                    icon6,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(width: 20.0),
+                Text(
+                  text6,
                 )
               ],
             ),

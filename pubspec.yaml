@@ -24,6 +24,12 @@ dependencies:
   dropdownfield: ^1.0.0
   image_picker: ^0.6.4
   flushbar: ^1.10.4
+  provider: ^4.3.2+2
+  dio: ^3.0.10
+  equatable: ^1.2.5
+  shared_preferences: ^0.5.12
+  flutter_bloc: ^6.0.5
+  google_maps_flutter: ^0.5.33
   flutter:
     sdk: flutter
 

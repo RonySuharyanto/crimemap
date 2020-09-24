@@ -21,15 +21,18 @@ class _AkunPageState extends State<AkunPage> {
           color: Colors.white,
           child: ProfileList(
             icon1: Icons.supervisor_account,
-            text1: 'Renakta',
+            text1: 'Supri',
             icon2: Icons.local_phone,
             text2: '08567080999',
             icon3: Icons.wc,
             text3: 'laki-laki',
             icon4: Icons.home,
-            text4: 'jl.kesasar buntu',
+            text4: 'jl.sumur batu',
             icon5: Icons.check,
             text5: 'Simpan',
+            icon6: Icons.arrow_forward,
+            text6: 'Logout'
+
           ),
         ),
         //heading

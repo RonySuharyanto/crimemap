@@ -64,11 +64,6 @@ class _DashboardPageState extends State<DashboardPage> {
               offset: Offset(0, 3),
             )
           ],
-          gradient: LinearGradient(
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            colors: [color1, color2],
-          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

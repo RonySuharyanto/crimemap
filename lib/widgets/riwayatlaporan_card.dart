@@ -3,8 +3,10 @@ import 'package:crimemap/shared/sizeconfig.dart';
 import 'package:crimemap/shared/theme.dart';
 import 'package:flutter/material.dart';
 
+import '../models/laporan_model.dart';
+
 class RiwayatLaporanCard extends StatelessWidget {
-  final Laporan laporan;
+  final LaporanModel laporan;
 
   RiwayatLaporanCard(this.laporan);
 
@@ -18,13 +20,14 @@ class RiwayatLaporanCard extends StatelessWidget {
         height: 100,
         child: Row(
           children: [
-            (laporan.kejahatan == 'Curanmor')
+            (laporan.jenisKejahatan.jenis.toLowerCase() == 'Curanmor')
                 ? Image.asset('assets/curanmor.png', height: 100)
-                : (laporan.kejahatan == 'Tawuran')
+                : (laporan.jenisKejahatan.jenis.toLowerCase() == 'tawuran')
                     ? Image.asset('assets/tawuran.png', height: 100)
-                    : (laporan.kejahatan == 'Curas')
+                    : (laporan.jenisKejahatan.jenis.toLowerCase() == 'curas')
                         ? Image.asset('assets/curas.png', height: 100)
-                        : (laporan.kejahatan == 'Curat')
+                        : (laporan.jenisKejahatan.jenis.toLowerCase() ==
+                                'Curat')
                             ? Image.asset('assets/curat.png', height: 100)
                             : Image.asset('assets/begal.png', height: 100),
             SizedBox(width: 25),
@@ -33,12 +36,12 @@ class RiwayatLaporanCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Jumlah Korban: ${laporan.jumlahKorban.toString()} orang',
+                  'Jumlah Korban: ${laporan.jumlahKorban} orang',
                   style: blackTextFont.copyWith(fontSize: 20),
                 ),
                 Text(
-                  'Tanggal Laporan ${laporan.tanggalDibuat}',
-                  style: blackTextFont.copyWith(fontSize: 20),
+                  'Tanggal Laporan ${DateTime.parse(laporan.tanggalDibuat).toLocal().toIso8601String()}',
+                  style: blackTextFont.copyWith(fontSize: 12),
                 ),
               ],
             ),
