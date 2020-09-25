@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ProfileHeading extends StatelessWidget {
-  final ImageProvider<dynamic> image;
+  final String imageURL;
   final String nama;
   final String email;
 
-  ProfileHeading({this.image, this.nama, this.email});
+  ProfileHeading({this.imageURL, this.nama, this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,12 @@ class ProfileHeading extends StatelessWidget {
             height: 120.0,
             width: 120.0,
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.blue,
-                border: Border.all(width: 1, color: Colors.brown),
-                image: DecorationImage(image: image, fit: BoxFit.cover)),
+              shape: BoxShape.circle,
+              color: Colors.blue,
+              border: Border.all(width: 1, color: Colors.brown),
+              image: DecorationImage(
+                  image: NetworkImage(imageURL), fit: BoxFit.cover),
+            ),
           ),
           //nama
           Text(

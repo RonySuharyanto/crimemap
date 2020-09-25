@@ -1,3 +1,4 @@
+import 'package:crimemap/bloc/profile_cubit/profile_cubit.dart';
 import 'package:crimemap/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 
@@ -31,9 +32,14 @@ class AuthService {
       'email': email,
       'password': password,
       'nama': nama,
-      'alamat' : alamat,
-      'no_telp' : noTelp,
-      'jenis_kelamin' : jenisKelamin,
+      'alamat': alamat,
+      'no_telp': noTelp,
+      'jenis_kelamin': jenisKelamin,
     });
+  }
+
+  Future<Profile> profile() async {
+    final res = await api.dio.get('/api/masyarakat/profile');
+    return Profile.fromJSON(res.data);
   }
 }

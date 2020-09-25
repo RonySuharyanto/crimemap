@@ -7,4 +7,4 @@ abstract class PengaduanEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PengeduanEventFetch extends PengaduanEvent {}
+class PengaduanEventFetch extends PengaduanEvent {}

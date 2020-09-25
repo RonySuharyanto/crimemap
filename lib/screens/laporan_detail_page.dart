@@ -68,8 +68,8 @@ class _LaporanDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //Text(data.id),
-        //Text(data.jumlahKorban.toString()),
+        Text(data.id),
+        Text(data.jumlahKorban.toString()),
         ListView.builder(
           shrinkWrap: true,
           itemCount: data.riwayat.length,

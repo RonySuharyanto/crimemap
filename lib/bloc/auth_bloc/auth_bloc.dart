@@ -22,6 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final token = pref.getString("token");
       if (token == null) {
         yield AuthUnauthenticated();
+        return;
       }
       this._api.setDefaultAuthHeader(token);
       yield AuthAuthenticated();

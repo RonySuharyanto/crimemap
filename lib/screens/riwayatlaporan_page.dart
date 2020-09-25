@@ -63,6 +63,6 @@ class _RiwayatLaporanPageState extends State<RiwayatLaporanPage> {
   }
 
   void fetch() {
-    context.bloc<PengaduanBloc>()..add(PengeduanEventFetch());
+    context.bloc<PengaduanBloc>()..add(PengaduanEventFetch());
   }
 }

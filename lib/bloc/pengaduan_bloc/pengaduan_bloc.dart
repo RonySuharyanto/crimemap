@@ -18,7 +18,7 @@ class PengaduanBloc extends Bloc<PengaduanEvent, PengaduanState> {
   Stream<PengaduanState> mapEventToState(
     PengaduanEvent event,
   ) async* {
-    if (event is PengeduanEventFetch) {
+    if (event is PengaduanEventFetch) {
       try {
         yield PengaduanLoading();
         final data = await _laporanService.getListPengaduan();
