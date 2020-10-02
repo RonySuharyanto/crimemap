@@ -18,4 +18,13 @@ class PengaduanLoaded extends PengaduanState {
   List<Object> get props => [data];
 }
 
+class PengaduanLoadedbyId extends PengaduanState{
+  final String id;
+
+  PengaduanLoadedbyId(this.id);
+
+  @override
+  List<Object> get props => [id];
+}
+
 class PengaduanFailure extends PengaduanState {}

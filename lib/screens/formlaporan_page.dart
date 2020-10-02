@@ -30,16 +30,25 @@ class _FormLaporanPageState extends State<FormLaporanPage> {
     final picker = ImagePicker();
 
     final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(-6.130754, 106.856512),
-    zoom: 11,
-  );
+      target: LatLng(-6.130754, 106.856512),
+      zoom: 11,
+    );
 
-
-    Future getImage() async {
-      final pickedFile = await picker.getImage(source: ImageSource.camera);
+    _imgFromCamera() async {
+      final pickedFileFromCamera =
+          await picker.getImage(source: ImageSource.camera, imageQuality: 50);
 
       setState(() {
-        _image = File(pickedFile.path);
+        _image = File(pickedFileFromCamera.path);
+      });
+    }
+
+    _imgFromGallery() async {
+      final pickedFileFromGallery =
+          await picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+
+      setState(() {
+        _image = File(pickedFileFromGallery.path);
       });
     }
 
@@ -53,7 +62,7 @@ class _FormLaporanPageState extends State<FormLaporanPage> {
 
     var kejahatan = 'Tawuran';
 
-    //SizeTheme().init(context);
+    print(_image);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -109,28 +118,33 @@ class _FormLaporanPageState extends State<FormLaporanPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _image == null
-                      ? Image.asset(
-                          'assets/gallery-icon.png',
-                          height: 100,
-                        )
-                      : Image.file(
-                          _image,
-                          fit: BoxFit.cover,
+                  _image != null
+                      ? Container(
                           width: 100,
                           height: 100,
-                        ),
+                          child: Image.file(
+                            _image,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : Text('Tidak Ada Foto'),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FlatButton(
-                        onPressed: getImage,
-                        child: Text('Pilih foto dari kamera'),
+                        onPressed: _imgFromCamera,
+                        child: Text(
+                          'Pilih foto dari kamera',
+                          style: TextStyle(color: Colors.white),
+                        ),
                         color: Colors.red,
                       ),
                       FlatButton(
-                        onPressed: () {},
-                        child: Text('Pilih foto dari gallery'),
+                        onPressed: _imgFromGallery,
+                        child: Text(
+                          'Pilih foto dari gallery',
+                          style: TextStyle(color: Colors.white),
+                        ),
                         color: Colors.lightBlue,
                       ),
                     ],
@@ -144,12 +158,12 @@ class _FormLaporanPageState extends State<FormLaporanPage> {
                 height: 200,
                 child: GoogleMap(
                   zoomGesturesEnabled: true,
-        mapType: MapType.normal,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
+                  mapType: MapType.normal,
+                  initialCameraPosition: _kGooglePlex,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
+                ),
               ),
               SizedBox(height: 50),
               //button

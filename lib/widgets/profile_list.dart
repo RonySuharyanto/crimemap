@@ -135,37 +135,6 @@ class ProfileList extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10.0,
-          ),
-          //
-          SizedBox(
-            height: 10.0,
-          ),
-          //
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Container(
-                  width: 50.0,
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.blue,
-                  ),
-                  child: Icon(
-                    icon5,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(width: 20.0),
-                Text(
-                  text5,
-                )
-              ],
-            ),
-          ),
-          SizedBox(
             height: 10,
           ),
           //logout
@@ -174,8 +143,8 @@ class ProfileList extends StatelessWidget {
               //
               context.bloc<AuthBloc>().add(AuthEventLoggedOut());
               //
-             Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => LoginPage()));
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginPage()));
               print('logout');
             },
             child: Row(

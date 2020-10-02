@@ -1,5 +1,6 @@
 import 'package:crimemap/screens/akun_page.dart';
 import 'package:crimemap/screens/dashboard_page.dart';
+import 'package:crimemap/screens/editprofile_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,10 +34,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // print(_pages[_selectedPageIndex]['title']);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title']),
+      actions: <Widget>[
+        (_pages[_selectedPageIndex]['title'] == 'Akun') ? FlatButton(onPressed: (){
+          print('editprofile page');
+          Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
+        }, child: Text('Edit Profile', style: TextStyle(color: Colors.white, fontSize: 18),),) : Text('')
+      ],
       ),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(

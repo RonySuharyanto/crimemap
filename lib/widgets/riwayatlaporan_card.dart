@@ -2,6 +2,7 @@ import 'package:crimemap/models/laporan_model.dart';
 import 'package:crimemap/shared/sizeconfig.dart';
 import 'package:crimemap/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../models/laporan_model.dart';
 
@@ -12,6 +13,7 @@ class RiwayatLaporanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(laporan.jenisKejahatan.jenis);
     return Card(
       elevation: 2,
       child: Container(
@@ -40,7 +42,7 @@ class RiwayatLaporanCard extends StatelessWidget {
                   style: blackTextFont.copyWith(fontSize: 20),
                 ),
                 Text(
-                  'Tanggal Laporan ${DateTime.parse(laporan.tanggalDibuat).toLocal().toIso8601String()}',
+                  'Tanggal Laporan ${dateFormat(laporan.tanggalDibuat)}',
                   style: blackTextFont.copyWith(fontSize: 12),
                 ),
               ],
@@ -49,5 +51,9 @@ class RiwayatLaporanCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String dateFormat(String date){
+    return DateFormat('dd-MMMM-yyyy').format(DateTime.parse(date));
   }
 }

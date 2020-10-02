@@ -49,8 +49,6 @@ class _AkunPageState extends State<AkunPage> {
                     text3: state.data.jenisKelamin,
                     icon4: Icons.home,
                     text4: state.data.alamat,
-                    icon5: Icons.check,
-                    text5: 'Simpan',
                     icon6: Icons.arrow_forward,
                     text6: 'Logout',
                   ),
